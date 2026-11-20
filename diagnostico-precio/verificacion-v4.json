@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "policy": "precio-sensibilidad-condicionada-v4",
+  "base_price_policy": "ancla-historica-v1",
+  "sku_count": 30,
+  "scenario_checks": 480,
+  "reference_price_checks": 240,
+  "automatic_response_nonzero_and_monotonic_all30": true,
+  "neutral_price_identical_inventory_all30": true,
+  "two_price_paths_apply_once": true,
+  "temporal_evidence_preserved": true,
+  "independent_normal_density_integration": [
+    {
+      "estimate": -0.009087088,
+      "se": 0.033646567,
+      "integrated_mean": -0.03042824742196791
+    },
+    {
+      "estimate": 0.061965,
+      "se": 0.028763,
+      "integrated_mean": -0.010247169651093766
+    },
+    {
+      "estimate": -0.8,
+      "se": 0.02,
+      "integrated_mean": -0.7999999999999998
+    },
+    {
+      "estimate": 0.0,
+      "se": 0.1,
+      "integrated_mean": -0.07978845608028655
+    }
+  ],
+  "source_sha256": "03b68f32303f5b1474561b0aa68db608a583793c95a2f000cb3ab78f104a9bb4",
+  "source_original_ols_v3_estimates_and_forecast_models_unchanged": true,
+  "pages": [
+    "Escenario",
+    "Inventarios",
+    "Modelos y elasticidad",
+    "Escenarios guardados",
+    "Resumen de 30 SKU",
+    "Método y fuentes"
+  ],
+  "saved_run": "20261008T174411-33e48a93",
+  "export_run": "20261008T174412-a2071d07",
+  "ju021": {
+    "summary": {
+      "base_units": 8275.909207384317,
+      "scenario_units": 8251.942832433931,
+      "base_revenue": 43751.989763493206,
+      "scenario_revenue": 47987.816228406824,
+      "demand_change_pct": -0.2895920478320546,
+      "revenue_change_pct": 9.681448747384746,
+      "elasticity": -0.0304282478011546,
+      "elasticity_se": 0.0219708307551503,
+      "price_reference": 5.286668650793652,
+      "price_proposed": 5.815335515873017,
+      "demand_change_low_pct": -0.6858775891826263,
+      "demand_change_high_pct": -0.02503656004945176
+    },
+    "inventory": [
+      {
+        "scenario": "Base",
+        "expected_lead_demand": 1264.39811858966,
+        "expected_protection_demand": 1906.8065046825577,
+        "safety_stock": 771.7636818491851,
+        "reorder_point": 2000,
+        "target_stock": 2679,
+        "inventory_position": 0.0,
+        "suggested_order": 2679,
+        "cycle_service_target": 0.95,
+        "simulated_cycle_service": 0.95,
+        "capacity_feasible": true,
+        "protection_weeks": 3.0
+      },
+      {
+        "scenario": "Precio propuesto",
+        "expected_lead_demand": 1260.7365221852865,
+        "expected_protection_demand": 1901.284544677453,
+        "safety_stock": 771.5034296089932,
+        "reorder_point": 1999,
+        "target_stock": 2673,
+        "inventory_position": 0.0,
+        "suggested_order": 2673,
+        "cycle_service_target": 0.95,
+        "simulated_cycle_service": 0.95,
+        "capacity_feasible": true,
+        "protection_weeks": 3.0
+      }
+    ],
+    "info": {
+      "as_of": "2024-12-23",
+      "history_end": "2024-12-23",
+      "gap_weeks": 0,
+      "price_reference": 5.286668650793652,
+      "forecast_price_anchor": 5.286668650793652,
+      "base_price_policy": "ancla-historica-v1",
+      "forecast_model": "SARIMAX estacional",
+      "computed_horizon": 12,
+      "promotion_share": 0.5,
+      "promotion_share_definition": "Media del indicador semanal de alguna promoción entre celdas, no proporción de días promocionales. Forecast original conservado.",
+      "data_version": "03b68f32303f5b1474561b0aa68db608a583793c95a2f000cb3ab78f104a9bb4",
+      "training_version": "integrado-h12-exante-v1",
+      "price_policy_version": "precio-sensibilidad-condicionada-v4",
+      "price_response_status": "sensibilidad calibrada bajo supuesto de demanda decreciente",
+      "elasticity_source": "Sensibilidad condicionada: ajuste semanal libre y supuesto de signo",
+      "scenario_elasticity_low": -0.0819606029785869,
+      "scenario_elasticity_high": -0.0013195115240678,
+      "observational_elasticity": 0.0233883067282931,
+      "elasticity_p_cluster": 0.6222838486588039,
+      "elasticity_ci_low": -0.0703481644803157,
+      "elasticity_ci_high": 0.117124777936902,
+      "corrected_elasticity_free": -0.0090870880595543,
+      "corrected_elasticity_ci_low": -0.0756830700019758,
+      "corrected_elasticity_ci_high": 0.0575088938828671,
+      "price_supported": false,
+      "price_validation_gain_pct": -0.3239123162672719,
+      "error_points": 24,
+      "error_policy": "proportional",
+      "elasticity_uncertainty_included": true,
+      "uncertainty_method": "Bootstrap de bloques 4; epsilon automática: aproximación normal condicionada a no positiva; epsilon manual: lognormal negativa subjetiva. No intervalo causal.",
+      "seed": 805,
+      "samples": 1000
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "price_policy": "precio-sensibilidad-condicionada-v4",
+  "motor_comparisons": 720,
+  "sku_count": 30,
+  "ui_pages": [
+    "Escenario",
+    "Inventarios",
+    "Modelos y elasticidad",
+    "Escenarios guardados",
+    "Resumen de 30 SKU",
+    "Método y fuentes"
+  ],
+  "browser": {
+    "passed": true,
+    "browser": "Edge headless, entrada virtual Playwright; sin captura nativa ni Pointer Lock",
+    "url": "http://localhost:8510/",
+    "sku": "JU-021",
+    "manual": false,
+    "plus10": "Ventas previstas del periodo\n\n8,251.9 u.\n-0.29%",
+    "minus10": "Ventas previstas del periodo\n\n8,302.5 u.\n+0.32%",
+    "reference_plus10_and_slider_plus10": "8,228.0 u.; -0.29% frente a referencia",
+    "pages": [
+      "Escenario",
+      "Modelos y elasticidad",
+      "Inventarios"
+    ],
+    "page_errors": [],
+    "downloaded_result": "descarga-navegador-v4.zip"
+  },
+  "source_sha256": "03b68f32303f5b1474561b0aa68db608a583793c95a2f000cb3ab78f104a9bb4",
+  "source_original_ols_v3_and_forecast_models_unchanged": true,
+  "checked_code_sha256": {
+    "motor.py": "5bf6ef2404e797ff790ba24e0ee9a9dce69de19f795f2def40ad4b37bafd755b",
+    "app.py": "2c1c31b51edb9f5bc54c2d6fd82bd6a2775f6bf1a43e92e7e90900a93e06c847",
+    "respuesta_precio.py": "8f1fba427adf245058c15585f48afbdd2665fb859c49bac3f43b1f224468cb83"
+  },
+  "meaning": "Escenarios responden automáticamente bajo supuesto económico de signo; evidencia débil preservada; no efecto causal identificado.",
+  "last_label_edit": "Clarifica separación entre estado del escenario y validación predictiva; texto sin cambios de cálculo."
+}

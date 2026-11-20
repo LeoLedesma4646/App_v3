@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "sku": "JU-021",
+  "forecast_model": "SARIMAX estacional",
+  "price_anchor": 5.286668650793652,
+  "base_price_policy": "ancla-historica-v1",
+  "source_sha256": "03b68f32303f5b1474561b0aa68db608a583793c95a2f000cb3ab78f104a9bb4",
+  "old_plus10_base_increase_pct": 3.2019413756056103,
+  "results": [
+    {
+      "reference_ratio": 0.9,
+      "old_predictive_regressor_units": 8010.919446265525,
+      "corrected_automatic_units": 8275.909207384317,
+      "explicit_hypothesis_minus1_units": 9195.454674871464
+    },
+    {
+      "reference_ratio": 1.0,
+      "old_predictive_regressor_units": 8275.909207384317,
+      "corrected_automatic_units": 8275.909207384317,
+      "explicit_hypothesis_minus1_units": 8275.909207384317
+    },
+    {
+      "reference_ratio": 1.1,
+      "old_predictive_regressor_units": 8540.89896850311,
+      "corrected_automatic_units": 8275.909207384317,
+      "explicit_hypothesis_minus1_units": 7523.553824894834
+    }
+  ],
+  "scope": "Reproduce el cálculo predictivo anterior, no un efecto causal. Hipótesis -1 es exclusivamente prueba de integración."
+}

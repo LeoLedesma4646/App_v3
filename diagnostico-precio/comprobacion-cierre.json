@@ -1,0 +1,65 @@
+{
+  "scope": "Corrección del comportamiento y metodología del escenario de precio; no se afirma haber identificado una elasticidad causal real.",
+  "requirements": [
+    {
+      "requirement": "Encontrar y reproducir por qué crecía la demanda",
+      "evidence": [
+        "auditoria.json",
+        "verificacion-rutas-precio.json"
+      ],
+      "result": "Dos rutas reproducidas: OLS positivo incierto aplicado como efecto y precio de referencia introducido al forecast predictivo."
+    },
+    {
+      "requirement": "Revisar variables y especificación, conservando datos semanales",
+      "evidence": [
+        "trazabilidad.json",
+        "contrastes-exposicion.json",
+        "../artifacts/price_response.csv"
+      ],
+      "result": "Fuente diaria de la misma base verifica sumas/medias/máximos. Se ajusta el total semanal con exposición diaria agregada; no se imputan días ausentes."
+    },
+    {
+      "requirement": "Conservar base recibida",
+      "evidence": [
+        "trazabilidad.json",
+        "verificacion-v3.json"
+      ],
+      "result": "SHA original intacto, equivalencia de 24 columnas públicas y PKL de forecast/OLS anterior sin cambios."
+    },
+    {
+      "requirement": "Corregir entradas de precio y coherencia con inventario",
+      "evidence": [
+        "verificacion-v3.json",
+        "verificacion-rutas-precio.json",
+        "verificacion-navegador-v3.json"
+      ],
+      "result": "480 comprobaciones en 30 SKU, misma demanda/bandas/inventario para el mismo precio final por cualquiera de las dos entradas; descarga real verificada."
+    },
+    {
+      "requirement": "Estimación y explicación defendibles",
+      "evidence": [
+        "validacion-respuesta-semanal.csv",
+        "holdout-respuesta-semanal.csv",
+        "verificacion-modelo-semanal.json",
+        "DIAGNOSTICO.md"
+      ],
+      "result": "Regresión conjunta y restricción económica explícita; selección anterior al holdout. Se concluye efecto no respaldado, sin presentarlo como causalidad ni inelasticidad real."
+    },
+    {
+      "requirement": "Documentar modelo, parámetros y procedencia en app",
+      "evidence": [
+        "DIAGNOSTICO.md",
+        "../../forecast-30-skus/GUIA-MODELOS-PARAMETROS.md",
+        "verificacion-v3.json",
+        "verificacion-navegador-v3.json"
+      ],
+      "result": "Ecuación y parámetros explicados; seis páginas AppTest y páginas de escenario/regresión/inventario en navegador; salidas versionadas con política de precio y ancla."
+    }
+  ],
+  "limitations": [
+    "No se encontró el generador original ni un diseño que identifique causalidad.",
+    "La base actual no respalda un efecto automático; escenarios de efecto negativo manual son hipótesis explícitas.",
+    "Word/PBIX originales y benchmark Naive H12 quedan fuera de esta reparación."
+  ],
+  "all_required_behavior_checks_pass": true
+}

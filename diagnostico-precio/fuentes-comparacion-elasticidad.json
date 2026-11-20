@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "comparacion-elasticidades",
+      "title": "Coeficiente estimado frente a sensibilidad aplicada",
+      "queries": [
+        {
+          "id": "ju021-comparacion",
+          "source": {
+            "label": "Modelos y motor vigentes",
+            "files": [
+              {
+                "label": "elasticity.csv"
+              },
+              {
+                "label": "price_scenario.csv"
+              },
+              {
+                "label": "respuesta_precio.py"
+              },
+              {
+                "label": "motor.py"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Elasticidad",
+                "definition": "El coeficiente relaciona cambios proporcionales de precio y demanda; el escenario emplea una media condicionada al supuesto no positivo, distinta del coeficiente libre."
+              },
+              {
+                "label": "Cambio de demanda",
+                "definition": "El porcentaje mostrado se calcula como 100 × ((precio propuesto/precio base)^elasticidad − 1)."
+              }
+            ],
+            "filters": [
+              "SKU: JU-021",
+              "Cambio de precio: +10%",
+              "Otros factores: constantes",
+              "Cálculo automático: sin elasticidad manual"
+            ],
+            "caveats": [
+              "La sensibilidad aplicada deriva del estimador libre y su error agrupado bajo el supuesto epsilon <= 0; no es el coeficiente directo de la regresión.",
+              "El intervalo libre corregido es [-0.075683, +0.057509] e incluye cero; los datos no identifican un efecto causal."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Conciliación de los parámetros",
+                "detail": "Se leyeron los artefactos originales y vigentes, y se verificó que motor.py utiliza elasticity_used. La preparación calcula esa media de la distribución normal condicionada."
+              }
+            ]
+          },
+          "columns": [
+            {
+              "field": "modelo",
+              "label": "Modelo o función"
+            },
+            {
+              "field": "elasticidad",
+              "label": "Elasticidad"
+            },
+            {
+              "field": "cambio_demanda_precio_mas10_pct",
+              "label": "Demanda al subir precio 10% (%)"
+            }
+          ],
+          "rows": [
+            {
+              "modelo": "OLS original",
+              "elasticidad": 0.0233883067282931,
+              "cambio_demanda_precio_mas10_pct": 0.2231630107615734
+            },
+            {
+              "modelo": "Regresión semanal corregida libre",
+              "elasticidad": -0.0090870880595543,
+              "cambio_demanda_precio_mas10_pct": -0.08657170474350995
+            },
+            {
+              "modelo": "Sensibilidad aplicada en el escenario",
+              "elasticidad": -0.0304282478011546,
+              "cambio_demanda_precio_mas10_pct": -0.2895920478320546
+            }
+          ],
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "Cambio % = 100 × (1.10^epsilon − 1)\nEscenario: 100 × (1.10^(-0.0304282478) − 1) = -0.289592%\nRegresión libre: 100 × (1.10^(-0.0090870881) − 1) = -0.086572%\nUn precio +1% con epsilon=-0.030428 produce aproximadamente -0.0304% de demanda."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

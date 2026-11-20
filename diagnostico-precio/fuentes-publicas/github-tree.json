@@ -1,0 +1,155 @@
+{
+  "sha": "190925c87ae60b7ff22b26a8d643f900aae8b398",
+  "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/trees/190925c87ae60b7ff22b26a8d643f900aae8b398",
+  "tree": [
+    {
+      "path": "Databricks_version",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "be4af974d76881b4b2699b37b9531dd412d4a4ec",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/trees/be4af974d76881b4b2699b37b9531dd412d4a4ec"
+    },
+    {
+      "path": "Databricks_version/01_data_load_eda.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "095001aab73bb47af6fcedcf9d681ea7285e1084",
+      "size": 4958,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/095001aab73bb47af6fcedcf9d681ea7285e1084"
+    },
+    {
+      "path": "Databricks_version/02_feature_engineering.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e9cf2ff87ab378662d60474c955fff00d99e86f",
+      "size": 6574,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/3e9cf2ff87ab378662d60474c955fff00d99e86f"
+    },
+    {
+      "path": "Databricks_version/03_forecasting_pipeline.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e8b0c1824d18aad77df07f5ebf0c39ee25184260",
+      "size": 16714,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/e8b0c1824d18aad77df07f5ebf0c39ee25184260"
+    },
+    {
+      "path": "Databricks_version/04_feature_store_and_inference.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b032d35a5c97ce01de4e33e0405354214595a81d",
+      "size": 5760,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/b032d35a5c97ce01de4e33e0405354214595a81d"
+    },
+    {
+      "path": "Databricks_version/05_weekly_prediction_job.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3b747da062f0d400c694e0ceb902e68a6c93e01",
+      "size": 13690,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/a3b747da062f0d400c694e0ceb902e68a6c93e01"
+    },
+    {
+      "path": "Databricks_version/06_optional_retraining_job.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04d7bb37a60665a9bee6e59574fb205fd566e016",
+      "size": 6461,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/04d7bb37a60665a9bee6e59574fb205fd566e016"
+    },
+    {
+      "path": "Databricks_version/utils",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "52db20d5c5fa868ba22ce8fe4c9a22dff421f56e",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/trees/52db20d5c5fa868ba22ce8fe4c9a22dff421f56e"
+    },
+    {
+      "path": "Databricks_version/utils/eda_utils.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b0dddce8405f1322e08b4366abce6f2b4797568",
+      "size": 5229,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/6b0dddce8405f1322e08b4366abce6f2b4797568"
+    },
+    {
+      "path": "Databricks_version/utils/feature_engineering_utils.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "add37abec36709ab11850600b07b789fde92a1e8",
+      "size": 3646,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/add37abec36709ab11850600b07b789fde92a1e8"
+    },
+    {
+      "path": "Databricks_version/utils/forecasting_utils.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aac601a13151974a31762cac7ce8e87cd0d63c29",
+      "size": 3594,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/aac601a13151974a31762cac7ce8e87cd0d63c29"
+    },
+    {
+      "path": "Databricks_version/utils/load_data.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff17b6fcdcebc0bfd83b1ac19c37c6f2a81c46ca",
+      "size": 528,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/ff17b6fcdcebc0bfd83b1ac19c37c6f2a81c46ca"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "168053412bbe1ed7308cfbd19ec4f4f61799623d",
+      "size": 4247,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/168053412bbe1ed7308cfbd19ec4f4f61799623d"
+    },
+    {
+      "path": "data",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fde2a3e2a10be77e83ac37658c827bf0274be35a",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/trees/fde2a3e2a10be77e83ac37658c827bf0274be35a"
+    },
+    {
+      "path": "data/FMCG_2022_2024 .csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f799375e977023f1e7b6174c86be113bb9a370f",
+      "size": 17747435,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/4f799375e977023f1e7b6174c86be113bb9a370f"
+    },
+    {
+      "path": "data/weekly_df_final_for_modeling .csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "098c2fcdc2d88d33d392949c6a7ab6ccb8dcebcb",
+      "size": 5005351,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/098c2fcdc2d88d33d392949c6a7ab6ccb8dcebcb"
+    },
+    {
+      "path": "notebooks",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d587a66e1dddae09062b8a8d078a46cb337b79bd",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/trees/d587a66e1dddae09062b8a8d078a46cb337b79bd"
+    },
+    {
+      "path": "notebooks/01_eda_insights.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d976ec115e4a94a52a3ae51b3e41b19282e3ee0",
+      "size": 1891076,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/2d976ec115e4a94a52a3ae51b3e41b19282e3ee0"
+    },
+    {
+      "path": "notebooks/02_demand_forecasting.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e0b29112583b97bb519f7bddb680412470691f3",
+      "size": 1042464,
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/blobs/3e0b29112583b97bb519f7bddb680412470691f3"
+    }
+  ],
+  "truncated": false
+}

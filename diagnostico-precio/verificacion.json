@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "policy": "precio-supuestos-v2",
+  "sku_count": 30,
+  "monotonic_scenario_checks": 120,
+  "invalid_cases_rejected": [
+    "El panel no identifica una respuesta al precio. Define una hipótesis explícita de elasticidad para simular un cambio.",
+    "La hipótesis de demanda debe tener elasticidad menor o igual a cero.",
+    "La dispersión requiere una hipótesis de elasticidad estrictamente negativa."
+  ],
+  "app_pages": [
+    "Escenario",
+    "Inventarios",
+    "Modelos y elasticidad",
+    "Escenarios guardados",
+    "Resumen de 30 SKU",
+    "Método y fuentes"
+  ],
+  "ui_price_plus10_delta": "-9.09%",
+  "source_sha256": "03b68f32303f5b1474561b0aa68db608a583793c95a2f000cb3ab78f104a9bb4",
+  "ols_sha256": "3f657a9c7bd27c5c087495566c56a83c9fd13719add3d08d1a03ab6dfac27f00",
+  "source_and_ols_unchanged": true,
+  "saved_run": "20261008T031423-fb930e87",
+  "export_run": "20261008T031423-c71ca60f",
+  "example_ju021": {
+    "summary": {
+      "base_units": 8275.909207384317,
+      "scenario_units": 7523.553824894834,
+      "base_revenue": 43751.989763493206,
+      "scenario_revenue": 43751.98976349321,
+      "demand_change_pct": -9.090909090909093,
+      "revenue_change_pct": 0.0,
+      "elasticity": -1.0,
+      "elasticity_se": 0.0,
+      "price_reference": 5.286668650793652,
+      "price_proposed": 5.815335515873017
+    },
+    "inventory": [
+      {
+        "scenario": "Base",
+        "expected_lead_demand": 1264.39811858966,
+        "expected_protection_demand": 1906.8065046825577,
+        "safety_stock": 771.7636818491851,
+        "reorder_point": 2000,
+        "target_stock": 2679,
+        "inventory_position": 0.0,
+        "suggested_order": 2679,
+        "cycle_service_target": 0.95,
+        "simulated_cycle_service": 0.95,
+        "capacity_feasible": true,
+        "protection_weeks": 3.0
+      },
+      {
+        "scenario": "Precio propuesto",
+        "expected_lead_demand": 1149.4528350815096,
+        "expected_protection_demand": 1733.460458802325,
+        "safety_stock": 701.6033471356225,
+        "reorder_point": 1818,
+        "target_stock": 2436,
+        "inventory_position": 0.0,
+        "suggested_order": 2436,
+        "cycle_service_target": 0.95,
+        "simulated_cycle_service": 0.95,
+        "capacity_feasible": true,
+        "protection_weeks": 3.0
+      }
+    ]
+  },
+  "example_scope": "epsilon=-1 es una hipótesis ilustrativa, no un resultado estimado",
+  "browser_check": {
+    "url": "http://localhost:8510/",
+    "sku": "JU-021",
+    "hypothesis_epsilon": -1.0,
+    "price_change_pct": 10.0,
+    "displayed_units": 7524,
+    "displayed_demand_delta": "-9.09%",
+    "explicit_hypothesis_label": true,
+    "screenshot": "ejemplo-corregido.png",
+    "source": "CUA captura y DOM, después de reiniciar motor y aplicar interfaz"
+  }
+}

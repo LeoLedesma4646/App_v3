@@ -1,0 +1,229 @@
+{
+  "source_sha256": "03b68f32303f5b1474561b0aa68db608a583793c95a2f000cb3ab78f104a9bb4",
+  "rows": 31027,
+  "sku_count": 30,
+  "duplicates_sku_week_channel_region": 0,
+  "missing_raw_units_recovered": [
+    {
+      "sku": "MI-006",
+      "week": "2022-02-14",
+      "channel": "Retail",
+      "region": "PL-South",
+      "units_sold": 75.0,
+      "method": "lag_1 de la semana siguiente, verificado contra pares consecutivos conocidos"
+    }
+  ],
+  "nonpositive_units": 0,
+  "nonpositive_price": 0,
+  "missing": {
+    "units_sold": 0,
+    "price_unit": 0,
+    "promotion_flag": 0,
+    "stock_available": 0,
+    "delivery_days": 0,
+    "is_holiday_peak": 0,
+    "is_holiday_week": 0,
+    "is_summer": 0,
+    "is_winter": 0
+  },
+  "independent_max_abs_epsilon_error": 3.3931191190106347e-15,
+  "independent_max_abs_se_error": 2.4924506902834764e-14,
+  "raw_positive_sku_count": 17,
+  "raw_cluster_ci_includes_zero_count": 30,
+  "spec_summary": [
+    {
+      "spec": "original",
+      "positive": 17,
+      "negative": 13,
+      "significantly_negative": 0,
+      "significantly_positive": 0,
+      "median_epsilon": 0.005679126998854576
+    },
+    {
+      "spec": "original_sin_stock",
+      "positive": 16,
+      "negative": 14,
+      "significantly_negative": 0,
+      "significantly_positive": 1,
+      "median_epsilon": 0.00635940474572307
+    },
+    {
+      "spec": "semana",
+      "positive": 14,
+      "negative": 16,
+      "significantly_negative": 0,
+      "significantly_positive": 0,
+      "median_epsilon": -0.0013130285292096725
+    },
+    {
+      "spec": "semana_sin_stock",
+      "positive": 17,
+      "negative": 13,
+      "significantly_negative": 0,
+      "significantly_positive": 1,
+      "median_epsilon": 0.0018580800560153874
+    },
+    {
+      "spec": "simple",
+      "positive": 14,
+      "negative": 16,
+      "significantly_negative": 0,
+      "significantly_positive": 0,
+      "median_epsilon": -0.022345242425339477
+    },
+    {
+      "spec": "tendencia",
+      "positive": 16,
+      "negative": 14,
+      "significantly_negative": 0,
+      "significantly_positive": 0,
+      "median_epsilon": 0.007249596204509437
+    },
+    {
+      "spec": "tendencia_sin_stock",
+      "positive": 15,
+      "negative": 15,
+      "significantly_negative": 0,
+      "significantly_positive": 1,
+      "median_epsilon": -0.0007055902713113159
+    }
+  ],
+  "split_sign_changes": 15,
+  "ju021": [
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "simple",
+      "epsilon": -0.0323842231512903,
+      "se_cluster": 0.06265014753808365,
+      "ci_low": -0.1563864144757799,
+      "ci_high": 0.09161796817319928,
+      "p_cluster": 0.6061426771739191,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 2,
+      "partial_price_log_sd": 0.17721428130815947,
+      "partial_price_share": 1.0
+    },
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "original",
+      "epsilon": 0.023388306728293663,
+      "se_cluster": 0.047358870744074445,
+      "ci_low": -0.07034816448031227,
+      "ci_high": 0.11712477793689959,
+      "p_cluster": 0.6222838486587858,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 13,
+      "partial_price_log_sd": 0.17582613819717102,
+      "partial_price_share": 0.9843950911215705
+    },
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "original_sin_stock",
+      "epsilon": 0.011977401460924008,
+      "se_cluster": 0.050468516498796565,
+      "ci_low": -0.0879139297596881,
+      "ci_high": 0.11186873268153612,
+      "p_cluster": 0.8127969286831747,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 12,
+      "partial_price_log_sd": 0.175847157122895,
+      "partial_price_share": 0.9846304618605473
+    },
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "tendencia",
+      "epsilon": 0.06254181060448531,
+      "se_cluster": 0.03965557156647778,
+      "ci_low": -0.015947673709645005,
+      "ci_high": 0.14103129491861563,
+      "p_cluster": 0.11731447320495454,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 22,
+      "partial_price_log_sd": 0.17547579253206064,
+      "partial_price_share": 0.9804760497395244
+    },
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "tendencia_sin_stock",
+      "epsilon": 0.050755460016635126,
+      "se_cluster": 0.045312480323909,
+      "ci_low": -0.03893063132252668,
+      "ci_high": 0.14044155135579695,
+      "p_cluster": 0.26482705327280953,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 21,
+      "partial_price_log_sd": 0.17549693230369834,
+      "partial_price_share": 0.9807123021364373
+    },
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "semana",
+      "epsilon": 0.06440776539866963,
+      "se_cluster": 0.03991854407361724,
+      "ci_low": -0.01460221517005554,
+      "ci_high": 0.14341774596739482,
+      "p_cluster": 0.10918235871334472,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 138,
+      "partial_price_log_sd": 0.16730694764156323,
+      "partial_price_share": 0.8913135654802893
+    },
+    {
+      "sku": "JU-021",
+      "sample": "total",
+      "spec": "semana_sin_stock",
+      "epsilon": 0.03157996351283044,
+      "se_cluster": 0.0465597503134816,
+      "ci_low": -0.06057482451673036,
+      "ci_high": 0.12373475154239125,
+      "p_cluster": 0.49886592144537695,
+      "n": 1125,
+      "weeks": 125,
+      "rank": 137,
+      "partial_price_log_sd": 0.16746794337606524,
+      "partial_price_share": 0.8930297730433971
+    },
+    {
+      "sku": "JU-021",
+      "sample": "primera_mitad",
+      "spec": "tendencia_sin_stock",
+      "epsilon": 0.053680807361970034,
+      "se_cluster": 0.05707812208347592,
+      "ci_low": -0.060453951743368886,
+      "ci_high": 0.16781556646730894,
+      "p_cluster": 0.3506811317571251,
+      "n": 558,
+      "weeks": 62,
+      "rank": 21,
+      "partial_price_log_sd": 0.1755697203645486,
+      "partial_price_share": 0.9705138289810027
+    },
+    {
+      "sku": "JU-021",
+      "sample": "segunda_mitad",
+      "spec": "tendencia_sin_stock",
+      "epsilon": 0.05649329182980364,
+      "se_cluster": 0.06782128348350173,
+      "ci_low": -0.07907952210236266,
+      "ci_high": 0.19206610576196995,
+      "p_cluster": 0.4080573766667267,
+      "n": 567,
+      "weeks": 63,
+      "rank": 21,
+      "partial_price_log_sd": 0.1737477193016689,
+      "partial_price_share": 0.9743796257575648
+    }
+  ]
+}

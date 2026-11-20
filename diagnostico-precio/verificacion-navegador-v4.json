@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "browser": "Edge headless, entrada virtual Playwright; sin captura nativa ni Pointer Lock",
+  "url": "http://localhost:8510/",
+  "sku": "JU-021",
+  "manual": false,
+  "plus10": "Ventas previstas del periodo\n\n8,251.9 u.\n-0.29%",
+  "minus10": "Ventas previstas del periodo\n\n8,302.5 u.\n+0.32%",
+  "reference_plus10_and_slider_plus10": "8,228.0 u.; -0.29% frente a referencia",
+  "pages": [
+    "Escenario",
+    "Modelos y elasticidad",
+    "Inventarios"
+  ],
+  "page_errors": [],
+  "downloaded_result": "descarga-navegador-v4.zip"
+}

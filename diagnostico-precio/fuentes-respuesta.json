@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "aumento-original",
+      "title": "Por qué subía la demanda al cambiar el precio",
+      "queries": [
+        {
+          "id": "ols-ju021",
+          "source": {
+            "label": "Regresión OLS anterior",
+            "files": [
+              {
+                "label": "elasticity.csv"
+              },
+              {
+                "label": "auditoria.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Coeficiente original",
+                "definition": "El coeficiente original relaciona log(ventas semanales) con log(precio medio) y los controles del panel de JU-021."
+              }
+            ],
+            "filters": [
+              "SKU: JU-021",
+              "Ámbito: SKU × semana × canal × región"
+            ],
+            "caveats": [
+              "El intervalo agrupado incluye cero; la asociación original no identifica una intervención de precio."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Reproducción",
+                "detail": "El coeficiente OLS y su covarianza se reprodujeron mediante proyección NumPy/FWL. El factor usado por la app reproduce el aumento observado de 0.223%."
+              }
+            ]
+          },
+          "columns": [
+            "sku",
+            "epsilon",
+            "ci_low",
+            "ci_high",
+            "demand_change_plus10_pct"
+          ],
+          "rows": [
+            {
+              "sku": "JU-021",
+              "epsilon": 0.0233883067282931,
+              "ci_low": -0.0703481644803157,
+              "ci_high": 0.117124777936902,
+              "demand_change_plus10_pct": 0.2231630107615734
+            }
+          ],
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "Q1/Q0 = (P1/P0)^epsilon\n1.10^0.0233883067 = 1.0022316301"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ruta-precio-referencia",
+      "title": "La referencia también alteraba el forecast",
+      "queries": [
+        {
+          "id": "referencia-sarimax",
+          "source": {
+            "label": "Forecast de JU-021 y enrutamiento del precio",
+            "files": [
+              {
+                "label": "verificacion-rutas-precio.json"
+              },
+              {
+                "label": "verificar-rutas-precio.py"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Cambio de referencia",
+                "definition": "El cambio de referencia modifica el precio introducido al forecast anterior; en la app corregida pasa por la respuesta de precio y conserva el ancla histórica."
+              }
+            ],
+            "filters": [
+              "SKU: JU-021",
+              "Horizonte: 12 semanas",
+              "Modelo: SARIMAX estacional"
+            ],
+            "caveats": [
+              "Los números previos reproducen consultas al modelo predictivo; no son efectos causales del precio."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Ambas rutas",
+                "detail": "La referencia +10% elevaba el forecast anterior 3.2019%. La política ancla-historica-v1 conserva las unidades sin respuesta respaldada y traduce una hipótesis negativa mediante la misma ecuación para referencia y precio propuesto."
+              }
+            ]
+          },
+          "columns": [
+            {
+              "field": "reference_ratio",
+              "label": "Referencia / ancla"
+            },
+            {
+              "field": "old_predictive_regressor_units",
+              "label": "Unidades base previas"
+            },
+            {
+              "field": "corrected_automatic_units",
+              "label": "Unidades base corregidas"
+            }
+          ],
+          "rows": [
+            {
+              "reference_ratio": 0.9,
+              "old_predictive_regressor_units": 8010.919446265525,
+              "corrected_automatic_units": 8275.909207384317
+            },
+            {
+              "reference_ratio": 1.0,
+              "old_predictive_regressor_units": 8275.909207384317,
+              "corrected_automatic_units": 8275.909207384317
+            },
+            {
+              "reference_ratio": 1.1,
+              "old_predictive_regressor_units": 8540.89896850311,
+              "corrected_automatic_units": 8275.909207384317
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medicion-semanal",
+      "title": "Qué omitía la regresión semanal anterior",
+      "queries": [
+        {
+          "id": "reconstruccion",
+          "source": {
+            "label": "Fuente diaria y agregación semanal",
+            "files": [
+              {
+                "label": "FMCG_2022_2024.csv"
+              },
+              {
+                "label": "weekly_df_final_for_modeling.xlsx"
+              },
+              {
+                "label": "trazabilidad.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Semanas parciales",
+                "definition": "Las celdas semanales parciales contienen menos de siete fechas diarias registradas por SKU, canal y región."
+              },
+              {
+                "label": "Promoción semanal",
+                "definition": "La promoción semanal toma el máximo de las banderas diarias; no mide cuántos días estuvieron en promoción."
+              }
+            ],
+            "filters": [
+              "Fuente pública: versión 16 del mismo caso",
+              "Grano semanal: SKU × canal × región × semana"
+            ],
+            "caveats": [
+              "Los días ausentes no se interpretan como cero ventas. El stock medio semanal puede ocultar días sin disponibilidad."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Equivalencia",
+                "detail": "Las 24 columnas del CSV semanal público coinciden con el Excel cargado. La suma diaria de unidades, media de precios/stock y máximo de promoción reconstruyen las 31 027 celdas semanales."
+              }
+            ]
+          },
+          "columns": [
+            "weekly_cells",
+            "under7_days",
+            "hidden_stockout_cells",
+            "equivalent_columns"
+          ],
+          "rows": [
+            {
+              "weekly_cells": 31027,
+              "under7_days": 21084,
+              "hidden_stockout_cells": 3538,
+              "equivalent_columns": 24
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Totales de las celdas semanales recibidas; no es una muestra de transacciones."
+          }
+        }
+      ]
+    },
+    {
+      "id": "resultado-corregido",
+      "title": "Qué respalda el modelo corregido",
+      "queries": [
+        {
+          "id": "seleccion-semanal",
+          "source": {
+            "label": "Regresión semanal corregida y validación",
+            "files": [
+              {
+                "label": "price_response.csv"
+              },
+              {
+                "label": "validacion-respuesta-semanal.csv"
+              },
+              {
+                "label": "holdout-respuesta-semanal.csv"
+              },
+              {
+                "label": "verificacion-v3.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Coeficiente corregido",
+                "definition": "El coeficiente corregido mide la asociación de precios con la media de ventas semanales, sumando exposiciones diarias disponibles y controlando promoción y calendario."
+              },
+              {
+                "label": "Respuesta respaldada",
+                "definition": "La respuesta se admite si supera evidencia negativa preholdout con Holm30, estabilidad en dos orígenes y mejora de deviance de validación."
+              }
+            ],
+            "filters": [
+              "Estimación: 30 SKU del caso recibido",
+              "Selección: dos bloques H12 anteriores al holdout H12"
+            ],
+            "caveats": [
+              "El modelo sin precio seleccionado conserva unidades base; no demuestra demanda real inelástica. La regresión observacional y la restricción económica no identifican una elasticidad causal."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Pruebas",
+                "detail": "El estimador recuperó una elasticidad conocida de -1 en una simulación exclusiva de prueba. La app aprobó 480 comparaciones del deslizador y referencia en 30 SKU, seis páginas, persistencia y exportación, conservando fuente, OLS y PKL de forecast."
+              }
+            ]
+          },
+          "columns": [
+            "sku",
+            "epsilon_free",
+            "ci_low",
+            "ci_high",
+            "validation_gain_pct",
+            "supported_sku",
+            "sku_count"
+          ],
+          "rows": [
+            {
+              "sku": "JU-021",
+              "epsilon_free": -0.0090870880595543,
+              "ci_low": -0.0756830700019758,
+              "ci_high": 0.0575088938828671,
+              "validation_gain_pct": -0.3239123162672719,
+              "supported_sku": 0,
+              "sku_count": 30
+            }
+          ],
+          "preview": {
+            "kind": "partial",
+            "note": "Estimación de JU-021 y cantidad respaldada entre los 30 SKU; resultados completos en price_response.csv.",
+            "totalRows": 30
+          }
+        }
+      ]
+    }
+  ]
+}

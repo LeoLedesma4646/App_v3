@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "policy": "precio-sensibilidad-condicionada-v4",
+  "pages": [
+    "Escenario",
+    "Inventarios",
+    "Modelos y elasticidad",
+    "Escenarios guardados",
+    "Resumen de 30 SKU",
+    "Método y fuentes"
+  ],
+  "slider_plus10": "-0.29%",
+  "slider_minus10": "+0.32%",
+  "manual_reference_plus10_and_slider_plus10": "8,228.0 u.",
+  "reference_cache_uses_same_historical_anchor": true,
+  "manual_automatic_transition_preserves_price": true
+}

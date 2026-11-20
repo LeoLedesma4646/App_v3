@@ -1,0 +1,22 @@
+{
+  "synthetic_only_for_tests": true,
+  "source_dataset_unchanged": true,
+  "tests": [
+    {
+      "true_epsilon": -1.0,
+      "recovered_free": -0.9887298441676418,
+      "recovered_nonpositive": -0.9887306921822108,
+      "maximum_derivative_error": 9.542944212626026e-11,
+      "weekly_cells": 180,
+      "result": "pass"
+    },
+    {
+      "true_epsilon": 0.7,
+      "recovered_free": 0.7084108316582801,
+      "recovered_nonpositive": 0.0,
+      "maximum_derivative_error": 8.881784197001251e-11,
+      "weekly_cells": 180,
+      "result": "pass"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "browser": "Edge headless, teclado/ratón virtual de Playwright; sin captura nativa ni Pointer Lock",
+  "url": "http://localhost:8510/",
+  "sku": "JU-021",
+  "manual": false,
+  "price_change_pct": 10,
+  "manual_reference_plus10_checked": true,
+  "demand_change_pct": 0,
+  "meaning": "Respuesta no respaldada; conserva demanda base, no prueba inelasticidad real",
+  "pages": [
+    "Escenario",
+    "Modelos y elasticidad",
+    "Inventarios"
+  ],
+  "page_errors": [],
+  "downloaded_result": "descarga-navegador-v3.zip",
+  "scenario_metric_text": "Precio propuesto\n\n5.82 u.m.\n+10.0%\n\nVentas previstas del periodo\n\n8,276 u.\n+0.00%\n\nIngreso potencial del periodo\n\n48,127 u.m.\n+10.00%",
+  "download_manifest_verified": true
+}

@@ -1,0 +1,66 @@
+{
+  "documented_at": "2026-10-08T05:18:50.229057+00:00",
+  "authentication": "ninguna; solo GET público",
+  "dataset": "beatafaron/fmcg-daily-sales-data-to-2022-2024",
+  "verified_dataset_version": 16,
+  "repository_commit": "190925c87ae60b7ff22b26a8d643f900aae8b398",
+  "files": [
+    {
+      "name": "dataset-metadata.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/list?search=fmcg-daily-sales-data-to-2022-2024",
+      "status": "conservado",
+      "bytes": 6565,
+      "sha256": "c55a0f6780f5f35c9c155af8cd60c0ef69a1821f423d740f8031d54ae00a9c2b"
+    },
+    {
+      "name": "dataset-v16.zip",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/beatafaron/fmcg-daily-sales-data-to-2022-2024",
+      "status": "conservado",
+      "bytes": 3872354,
+      "sha256": "c2ad83e0964513932fbe5ee4f05669567adeed95ac901dd0b3c678bda716ca21"
+    },
+    {
+      "name": "notebook-autora.json",
+      "url": "https://www.kaggle.com/api/v1/kernels/pull/beatafaron/fmcg-forecasting-ml-real-demand-signal-2",
+      "status": "conservado",
+      "bytes": 115555,
+      "sha256": "c873180c743ee0a47d95423a42cba4e0cdd60b736f03fa8302a1657d56dc3e11"
+    },
+    {
+      "name": "notebook-eda-autora.json",
+      "url": "https://www.kaggle.com/api/v1/kernels/pull/beatafaron/1-eda-key-business-insights-fmcg-2022-24",
+      "status": "conservado",
+      "bytes": 139819,
+      "sha256": "3e70136e891e5d258f301dca1a3df71a1edc1374e713e9ef1da9d0baf540d1f9"
+    },
+    {
+      "name": "github-repo.json",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo",
+      "status": "conservado",
+      "bytes": 6219,
+      "sha256": "6af594fc8de1d7258f88d561986fe70b7ce52591e63019e2e06cf38d4c1001e6"
+    },
+    {
+      "name": "github-tree.json",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/git/trees/190925c87ae60b7ff22b26a8d643f900aae8b398?recursive=1",
+      "status": "conservado",
+      "bytes": 6321,
+      "sha256": "000c11eacc1e40263bca4e98fc2d2ace1dcff0f273f68ae99539391e21cb7f24"
+    },
+    {
+      "name": "github-job-semanal.ipynb",
+      "url": "https://raw.githubusercontent.com/BeataFaron/fmcg_forecasting_repo/190925c87ae60b7ff22b26a8d643f900aae8b398/Databricks_version/05_weekly_prediction_job.ipynb",
+      "status": "conservado",
+      "bytes": 13690,
+      "sha256": "a25bb88073e346f227ebff085fd47418bc679f5c36fbc8c0161ee27ded75c87a"
+    },
+    {
+      "name": "github-commits.json",
+      "url": "https://api.github.com/repos/BeataFaron/fmcg_forecasting_repo/commits?per_page=30",
+      "status": "conservado",
+      "bytes": 26324,
+      "sha256": "c2d26865ec79aadf5e9e65d2e160fa79bfdeb88dd42455c27e33b1e0683c6653"
+    }
+  ],
+  "scope": "Documenta archivos recuperados/conservados; documented_at no representa la fecha de descarga de cada archivo ni frescura de los datos."
+}

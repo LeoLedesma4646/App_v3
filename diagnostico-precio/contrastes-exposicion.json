@@ -1,0 +1,110 @@
+{
+  "scope": "Contrastes de especificación y medición, no identificación causal. Offset normaliza exposición registrada, no imputa días ausentes ni demanda perdida. Simulación independiente ilustra un mecanismo, no prueba el generador.",
+  "models": {
+    "ols_original_plus_exposure": {
+      "median_epsilon": -0.014388945628581559,
+      "positive": 12,
+      "ci_excludes_zero_negative": 0,
+      "ci_excludes_zero_positive": 0
+    },
+    "ols_rate_actual_promotion": {
+      "median_epsilon": -0.0026280372074441016,
+      "positive": 13,
+      "ci_excludes_zero_negative": 0,
+      "ci_excludes_zero_positive": 0
+    },
+    "ppml_rate_arithmetic": {
+      "median_epsilon": -0.0033231762755610945,
+      "positive": 11,
+      "ci_excludes_zero_negative": 1,
+      "ci_excludes_zero_positive": 1
+    },
+    "ppml_rate_geometric": {
+      "median_epsilon": -0.0015453256432061498,
+      "positive": 14,
+      "ci_excludes_zero_negative": 2,
+      "ci_excludes_zero_positive": 0
+    },
+    "ppml_weekly_total": {
+      "median_epsilon": -0.004033557926465694,
+      "positive": 15,
+      "ci_excludes_zero_negative": 0,
+      "ci_excludes_zero_positive": 0
+    }
+  },
+  "ju021": [
+    {
+      "sku": "JU-021",
+      "specification": "ols_original_plus_exposure",
+      "epsilon": -0.031240845114893445,
+      "se": 0.040817197254983666,
+      "ci_low": -0.11202951205722088,
+      "ci_high": 0.04954782182743399,
+      "p": 0.4454970400818853,
+      "n": 1125,
+      "weeks": 125
+    },
+    {
+      "sku": "JU-021",
+      "specification": "ols_rate_actual_promotion",
+      "epsilon": 2.6716929319276142e-06,
+      "se": 0.03305388262831109,
+      "ci_low": -0.06542022096987483,
+      "ci_high": 0.0654255643557387,
+      "p": 0.9999356381472089,
+      "n": 1125,
+      "weeks": 125
+    },
+    {
+      "sku": "JU-021",
+      "specification": "ppml_weekly_total",
+      "epsilon": 0.03380648500173373,
+      "se": 0.04610878293047225,
+      "ci_low": -0.05745571225339933,
+      "ci_high": 0.1250686822568668,
+      "p": 0.464826576081833,
+      "n": 1125,
+      "weeks": 125
+    },
+    {
+      "sku": "JU-021",
+      "specification": "ppml_rate_arithmetic",
+      "epsilon": -0.0029569421557826495,
+      "se": 0.03630089852100975,
+      "ci_low": -0.07480658881330783,
+      "ci_high": 0.06889270450174252,
+      "p": 0.9352102933770341,
+      "n": 1125,
+      "weeks": 125
+    },
+    {
+      "sku": "JU-021",
+      "specification": "ppml_rate_geometric",
+      "epsilon": 0.00011233100820077546,
+      "se": 0.033174810183887536,
+      "ci_low": -0.06554991116090808,
+      "ci_high": 0.06577457317730964,
+      "p": 0.9973037829490661,
+      "n": 1125,
+      "weeks": 125
+    }
+  ],
+  "price_day_association": {
+    "median_corr_logprice_days": 0.008456773663055476,
+    "median_corr_logunits_days": 0.5141328338926112
+  },
+  "independent_price_simulation": {
+    "replications": 200,
+    "price_range": [
+      1.5,
+      9.0
+    ],
+    "daily_sales_constant": 1,
+    "ols_log_total_on_log_meanprice_mean": 0.018349395415765333,
+    "ols_slope_95_simulation_quantiles": [
+      0.0062678091826489975,
+      0.030318780053809818
+    ],
+    "mean_correlation": 0.018530777336342535
+  }
+}

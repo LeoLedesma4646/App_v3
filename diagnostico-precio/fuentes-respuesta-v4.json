@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "regla-cero",
+      "title": "Por qué la demanda quedaba igual",
+      "queries": [
+        {
+          "id": "regla-cero-evidencia",
+          "source": {
+            "label": "Selección predictiva v3",
+            "files": [
+              {
+                "label": "price_response.csv"
+              },
+              {
+                "label": "preparar_respuesta_precio.py"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Regla anterior",
+                "definition": "La falta de respaldo confirmatorio elegía un modelo sin precio y elasticidad cero."
+              }
+            ],
+            "filters": [
+              "Ámbito: treinta SKU del curso"
+            ],
+            "caveats": [
+              "No superar el criterio no demuestra inelasticidad real."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Comprobación registrada",
+                "detail": "Los treinta registros v3 seleccionaron no_price; el nuevo motor mantiene ese diagnóstico sin anular la sensibilidad."
+              }
+            ]
+          },
+          "columns": [
+            "sku_count",
+            "selected_without_price",
+            "epsilon_used"
+          ],
+          "rows": [
+            {
+              "sku_count": 30,
+              "selected_without_price": 30,
+              "epsilon_used": 0
+            }
+          ],
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "Si price_supported=False: epsilon=0\nQ1=Q0*(P1/P0)^0=Q0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "demanda-ju021",
+      "title": "La demanda cambia automáticamente en JU-021",
+      "queries": [
+        {
+          "id": "demanda-ju021-evidencia",
+          "source": {
+            "label": "Sensibilidad condicionada v4",
+            "files": [
+              {
+                "label": "price_scenario.csv"
+              },
+              {
+                "label": "respuesta_precio.py"
+              },
+              {
+                "label": "verificacion-v4.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Demanda del escenario",
+                "definition": "La trayectoria del forecast al ancla histórica se escala según precio y elasticidad media condicionada."
+              }
+            ],
+            "filters": [
+              "SKU: JU-021",
+              "Horizonte visible: doce semanas",
+              "Precio base: media de las cuatro últimas semanas",
+              "Corte histórico: 2024-12-23"
+            ],
+            "caveats": [
+              "El signo no positivo procede de un supuesto económico; la evidencia libre incluye cero.",
+              "La normal resumida y el error agrupado son aproximaciones; no identifican causalidad.",
+              "La curva central usa la media de elasticidad y no exactamente la media de demandas sorteadas."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Comprobación registrada",
+                "detail": "El momento se contrastó mediante integración numérica independiente; AppTest comprobó −0.29% y +0.32% sin elasticidad manual."
+              }
+            ]
+          },
+          "columns": [
+            "price_change_pct",
+            "base_units",
+            "scenario_units",
+            "demand_change_pct",
+            "elasticity_scenario",
+            "free_estimate",
+            "free_ci_low",
+            "free_ci_high"
+          ],
+          "rows": [
+            {
+              "price_change_pct": 10,
+              "base_units": 8275.909207384317,
+              "scenario_units": 8251.942832433931,
+              "demand_change_pct": -0.2895920478320546,
+              "elasticity_scenario": -0.0304282478011546,
+              "free_estimate": -0.0090870880595543,
+              "free_ci_low": -0.0756830700019758,
+              "free_ci_high": 0.0575088938828671
+            },
+            {
+              "price_change_pct": -10,
+              "base_units": 8275.909207384317,
+              "scenario_units": 8302.483817128958,
+              "demand_change_pct": 0.3211080387509391,
+              "elasticity_scenario": -0.0304282478011546,
+              "free_estimate": -0.0090870880595543,
+              "free_ci_low": -0.0756830700019758,
+              "free_ci_high": 0.0575088938828671
+            }
+          ],
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "b=-0.009087088; s=0.033646567\nepsilon_media=E[Normal(b,s²) | epsilon<=0]=-0.030428248\nQ1=Q0*(P1/P0)^epsilon_media"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comprobaciones-integracion",
+      "title": "Respuesta de los treinta SKU y conexión con inventarios",
+      "queries": [
+        {
+          "id": "comprobaciones-integracion-evidencia",
+          "source": {
+            "label": "Prueba integral v4",
+            "files": [
+              {
+                "label": "verificacion-v4.json"
+              },
+              {
+                "label": "verificar-v4.py"
+              },
+              {
+                "label": "verificacion-ui-v4.json"
+              },
+              {
+                "label": "verificacion-navegador-v4.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Comparaciones",
+                "definition": "Se verifican curvas centrales, bandas, demanda protegida y equivalencia de rutas de precio bajo los mismos supuestos."
+              }
+            ],
+            "filters": [
+              "Ámbito: treinta SKU",
+              "Cambios de precio verificados: −40%, −10%, +10% y +40%",
+              "Políticas de error: proporcional y absoluta"
+            ],
+            "caveats": [
+              "La respuesta es pequeña y depende del supuesto de demanda decreciente.",
+              "El stock de seguridad también depende de incertidumbre; cantidades enteras pueden permanecer iguales por redondeo."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Comprobación registrada",
+                "detail": "Las 720 comparaciones pasaron. Precio neutro conserva demanda/inventario. Ambas rutas coinciden al mismo precio final; fuente, OLS, estimaciones v3 y modelos de forecast mantienen sus huellas. El navegador comprobó subida/bajada, referencia, modelo, inventario y descarga real sin errores de página."
+              }
+            ]
+          },
+          "columns": [
+            "sku",
+            "elasticity_scenario",
+            "demand_change_plus10_pct"
+          ],
+          "rows": [
+            {
+              "sku": "JU-021",
+              "elasticity_scenario": -0.0304282478011546,
+              "demand_change_plus10_pct": -0.2895920478320546
+            },
+            {
+              "sku": "MI-002",
+              "elasticity_scenario": -0.0691503713379695,
+              "demand_change_plus10_pct": -0.6569063072243253
+            },
+            {
+              "sku": "MI-006",
+              "elasticity_scenario": -0.0222517938599639,
+              "demand_change_plus10_pct": -0.21185751188070867
+            },
+            {
+              "sku": "MI-008",
+              "elasticity_scenario": -0.0266396578731875,
+              "demand_change_plus10_pct": -0.2535809969992142
+            },
+            {
+              "sku": "MI-011",
+              "elasticity_scenario": -0.0387301046066975,
+              "demand_change_plus10_pct": -0.36845684912519827
+            },
+            {
+              "sku": "MI-022",
+              "elasticity_scenario": -0.0270438796237346,
+              "demand_change_plus10_pct": -0.25742379817151884
+            },
+            {
+              "sku": "MI-023",
+              "elasticity_scenario": -0.033930520917498,
+              "demand_change_plus10_pct": -0.32287005494401333
+            },
+            {
+              "sku": "MI-026",
+              "elasticity_scenario": -0.0165966144980251,
+              "demand_change_plus10_pct": -0.15805758841160866
+            },
+            {
+              "sku": "RE-004",
+              "elasticity_scenario": -0.0204356037504575,
+              "demand_change_plus10_pct": -0.19458254900722727
+            },
+            {
+              "sku": "RE-007",
+              "elasticity_scenario": -0.0635205052012841,
+              "demand_change_plus10_pct": -0.6035861328839931
+            },
+            {
+              "sku": "RE-015",
+              "elasticity_scenario": -0.026510274021094,
+              "demand_change_plus10_pct": -0.2523509566533355
+            },
+            {
+              "sku": "RE-017",
+              "elasticity_scenario": -0.0102468902401137,
+              "demand_change_plus10_pct": -0.0976156200475864
+            },
+            {
+              "sku": "RE-025",
+              "elasticity_scenario": -0.024720986538882,
+              "demand_change_plus10_pct": -0.23533881018031888
+            },
+            {
+              "sku": "SN-010",
+              "elasticity_scenario": -0.0237470996930888,
+              "demand_change_plus10_pct": -0.2260780918141525
+            },
+            {
+              "sku": "SN-013",
+              "elasticity_scenario": -0.0440146902568144,
+              "demand_change_plus10_pct": -0.4186261119851209
+            },
+            {
+              "sku": "SN-019",
+              "elasticity_scenario": -0.0195450562659609,
+              "demand_change_plus10_pct": -0.18611088121948116
+            },
+            {
+              "sku": "SN-027",
+              "elasticity_scenario": -0.022279002100735,
+              "demand_change_plus10_pct": -0.21211628438355667
+            },
+            {
+              "sku": "SN-028",
+              "elasticity_scenario": -0.0330970735670612,
+              "demand_change_plus10_pct": -0.31495178627867215
+            },
+            {
+              "sku": "SN-030",
+              "elasticity_scenario": -0.0232984699183685,
+              "demand_change_plus10_pct": -0.22181176902319466
+            },
+            {
+              "sku": "YO-001",
+              "elasticity_scenario": -0.0234555112649838,
+              "demand_change_plus10_pct": -0.22330520174637103
+            },
+            {
+              "sku": "YO-003",
+              "elasticity_scenario": -0.0197838898914012,
+              "demand_change_plus10_pct": -0.18838294644464293
+            },
+            {
+              "sku": "YO-005",
+              "elasticity_scenario": -0.0413468315444157,
+              "demand_change_plus10_pct": -0.39330192889777127
+            },
+            {
+              "sku": "YO-009",
+              "elasticity_scenario": -0.0264120040250948,
+              "demand_change_plus10_pct": -0.2514167027314773
+            },
+            {
+              "sku": "YO-012",
+              "elasticity_scenario": -0.0156153267634431,
+              "demand_change_plus10_pct": -0.14871926329101948
+            },
+            {
+              "sku": "YO-014",
+              "elasticity_scenario": -0.0262483014771266,
+              "demand_change_plus10_pct": -0.24986036139590384
+            },
+            {
+              "sku": "YO-016",
+              "elasticity_scenario": -0.0225823641232931,
+              "demand_change_plus10_pct": -0.2150014585428739
+            },
+            {
+              "sku": "YO-018",
+              "elasticity_scenario": -0.0617022952957324,
+              "demand_change_plus10_pct": -0.5863598468226372
+            },
+            {
+              "sku": "YO-020",
+              "elasticity_scenario": -0.0443858603888063,
+              "demand_change_plus10_pct": -0.42214886943594543
+            },
+            {
+              "sku": "YO-024",
+              "elasticity_scenario": -0.0275208603434131,
+              "demand_change_plus10_pct": -0.26195810414529896
+            },
+            {
+              "sku": "YO-029",
+              "elasticity_scenario": -0.0189626025016042,
+              "demand_change_plus10_pct": -0.18056968183082223
+            }
+          ],
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "480 comparaciones de deslizador + 240 de referencia = 720\nInventario: acumular demanda del escenario durante L+R"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
